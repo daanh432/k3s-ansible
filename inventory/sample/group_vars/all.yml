@@ -11,7 +11,7 @@ system_timezone: "Your/Timezone"
 flannel_iface: "eth0"
 
 # apiserver_endpoint is virtual ip-address which will be configured on each master
-apiserver_endpoint: "10.66.10.1"
+apiserver_endpoint: "192.168.30.222"
 
 # (optional) apiserver_advertise_port is the port on which nodes and servers will try to contact each other
 # apiserver_advertise_port: 6443
