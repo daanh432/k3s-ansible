@@ -1,0 +1,28 @@
+---
+- name: Create manifests directory for temp configuration
+  file:
+    path: /tmp/k3s
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    mode: 0755
+  with_items: "{{ groups['master'] }}"
+  run_once: true
+
+- name: Copy calico CRs manifest to first master
+  template:
+    src: "calico.crs.j2"
+    dest: "/tmp/k3s/calico-crs.yaml"
+    owner: "{{ ansible_user_id }}"
+    mode: 0755
+  with_items: "{{ groups['master'] }}"
+  run_once: true
+
+- name: Apply calico CRs
+  command: >-
+    k3s kubectl apply -f /tmp/k3s/calico-crs.yaml
+    --timeout='{{ calico_available_timeout }}'
+  register: this
+  changed_when: false
+  run_once: true
+  until: this.rc == 0
+  retries: 5

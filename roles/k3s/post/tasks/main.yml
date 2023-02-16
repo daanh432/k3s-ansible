@@ -1,4 +1,7 @@
 ---
+- name: Deploy calico pool
+  include_tasks: calico.yml
+
 - name: Deploy metallb pool
   include_tasks: metallb.yml
 
