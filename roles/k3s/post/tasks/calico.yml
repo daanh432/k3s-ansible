@@ -25,4 +25,5 @@
   changed_when: false
   run_once: true
   until: this.rc == 0
-  retries: 5
+  retries: 10
+  delay: 10
