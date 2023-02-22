@@ -9,8 +9,10 @@ spec:
   calicoNetwork:
     # Note: The ipPools section cannot be modified post-install.
     nodeAddressAutodetectionV4:
+      firstFound: false
       interface: {{ flannel_iface | default('eth0') }}
     nodeAddressAutodetectionV6:
+      firstFound: false
       interface: {{ flannel_iface | default('eth0') }}
     ipPools:
     - blockSize: 26
