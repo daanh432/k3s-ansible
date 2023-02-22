@@ -8,6 +8,10 @@ spec:
   # Configures Calico networking.
   calicoNetwork:
     # Note: The ipPools section cannot be modified post-install.
+    nodeAddressAutodetectionV4:
+      interface: {{ flannel_iface | default('eth0') }}
+    nodeAddressAutodetectionV6:
+      interface: {{ flannel_iface | default('eth0') }}
     ipPools:
     - blockSize: 26
       cidr: {{ flannel_subnet | default('10.47.0.0/16')}}
