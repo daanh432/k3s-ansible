@@ -3,7 +3,6 @@
 - hosts: proxmox
   gather_facts: true
   become: yes
-  remote_user: "{{ proxmox_lxc_ssh_user }}"
   roles:
     - role: proxmox_lxc
       when: proxmox_lxc_configure
@@ -12,6 +11,7 @@
   gather_facts: yes
   roles:
     - role: lxc
+      become: true
       when: proxmox_lxc_configure
     - role: prereq
       become: true
