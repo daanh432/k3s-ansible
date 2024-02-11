@@ -25,6 +25,7 @@
 
 - name: Deploy vip manifest
   include_tasks: vip.yml
+  tags: kubevip
 
 - name: Deploy metallb manifest
   include_tasks: metallb.yml
